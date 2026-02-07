@@ -76,14 +76,38 @@
 from rest_framework import mixins
 from rest_framework.viewsets import GenericViewSet
 from django_filters.rest_framework import DjangoFilterBackend
-from app.product.models import Product
+from app.product.models import Product, Category, Models
 from app.product.serializers import (
     ProductSerializer,
     ProductCreateSerializer,
     ProductDetailSerializer,
+    CategorySerializer,
+    ModelsSerializer,
 )
 from app.pagination import CustomPageNumberPagination
 from app.filters import ProductFilter
+
+class CategoryViewSet(
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    GenericViewSet
+):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class ModelsViewSet(
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    GenericViewSet
+):
+    queryset = Models.objects.all()
+    serializer_class = ModelsSerializer
 
 
 class ProductViewSet(mixins.ListModelMixin,

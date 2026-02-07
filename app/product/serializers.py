@@ -2,6 +2,24 @@ from rest_framework import serializers
 
 from app.product.models import Category, Models, Product, ProductImage
 
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = [
+            'id', 
+            'title'
+        ]
+
+class ModelsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Models
+        fields = [
+            'id', 
+            'title', 
+            'category'
+        ]
+
 class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductImage
