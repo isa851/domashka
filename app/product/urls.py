@@ -9,9 +9,11 @@
 
 
 from rest_framework.routers import DefaultRouter
-from app.product.views import ProductViewSet
+from app.product.views import ProductViewSet, CategoryViewSet, ModelsViewSet
 
 router = DefaultRouter()
 router.register("products", ProductViewSet, basename="products")
+router.register("categories", CategoryViewSet, basename="categories")
+router.register("models", ModelsViewSet, basename="models")
 
 urlpatterns = router.urls
